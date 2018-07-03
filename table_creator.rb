@@ -17,49 +17,21 @@ class TableCreator
 
   def table(config)
     TTY::Table.new(
-      header: headings,
-      rows: rows(config.participate_sign)
-    ).render(config.renderer, alignment: [:center], padding: [0, 1], &config.renderer_config)
+      header: headings(config.war_day_header),
+      rows: rows(config.transform_user, config.participate_sign)
+    ).render(config.renderer, alignment: [:center], padding: [0, 1], width: 9999, &config.renderer_config)
   end
 
-  def table_md
-    TTY::Table.new(
-      header: headings,
-      rows: rows
-    ).render(:basic, alignment: [:center], padding: [0, 1]) do |renderer|
-      renderer.border do
-        left '|'
-        right '|'
-        center '|'
-        mid '-'
-        mid_left '|'
-        mid_mid '|'
-        mid_right '|'
-      end
-    end
-  end
-
-  def table_unicode
-    TTY::Table.new(
-      header: headings,
-      rows: rows
-    ).render(:unicode, alignment: [:center], padding: [0, 1]) do |renderer|
-      renderer.border do
-        separator :each_row
-      end
-    end
-  end
-
-  def headings
+  def headings(war_day_header)
     day_headers = clan_wars_participants.map.with_index do |_el, index|
       war_ago = index + 1
-      ["#{war_ago}-1", "#{war_ago}-2"]
+      [war_day_header.call(war_ago, 1), war_day_header.call(war_ago, 2)]
     end.flatten
 
     headings = ['User'] + day_headers
   end
 
-  def rows(sign_mapper)
+  def rows(transform_user, sign_mapper)
     members.map do |member|
       participations = clan_wars_participants.flat_map do |clan_war_participants|
         [clan_war_participants.day_1.include?(member),
@@ -68,7 +40,7 @@ class TableCreator
 
       participations.map!{ |participated| sign_mapper.call(participated) }
 
-      [member] + participations
+      [transform_user.call(member)] + participations
     end
   end
 
@@ -95,8 +67,16 @@ class TableCreator
   end
 
   class Unicode
+    def transform_user
+      ->(user_name) { user_name }
+    end
+
     def participate_sign
       ->(participated) { participated ? '+' : '-' }
+    end
+
+    def war_day_header
+      ->(first, second) { "#{first}-#{second}" }
     end
 
     def renderer
@@ -113,8 +93,16 @@ class TableCreator
   end
 
   class Markdown
+    def transform_user
+      ->(user_name) { "``#{user_name}``" }
+    end
+
     def participate_sign
       ->(participated) { participated ? '✅' : '❌' }
+    end
+
+    def war_day_header
+      ->(first, second) { "#{first}&#8209;#{second}" }
     end
 
     def renderer
