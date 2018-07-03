@@ -98,4 +98,4 @@ X - Does not participated
 
 Numbers in header means which clan war given column refers to, e.g. 4 means 4th war ago.
 
-Created at 2018-07-03 17:33:55
+Created at 2018-07-03 18:07:35

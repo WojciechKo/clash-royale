@@ -8,7 +8,7 @@ class TableCreator
 
   def create(config_name)
     config = Config.for(config_name)
-    table(config) + "\n\n" + config.caption + "\n" + instruction  + "\n\n" + footer
+    table(config) + "\n\n" + config.caption + "\n" + instruction  + "\n\n" + footer + "\n"
   end
 
   private
