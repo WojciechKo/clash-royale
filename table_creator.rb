@@ -17,12 +17,12 @@ class TableCreator
 
   def table(config)
     TTY::Table.new(
-      header: headings(config.war_day_header),
+      header: headings,
       rows: rows(config.transform_user, config.participate_sign)
     ).render(config.renderer, alignment: [:center], padding: [0, 1], width: 9999, &config.renderer_config)
   end
 
-  def headings(war_day_header)
+  def headings
     day_headers = (1 ..clan_wars_participants.size).map(&:to_s)
 
     headings = ['User'] + day_headers
@@ -89,10 +89,6 @@ class TableCreator
       CAPTION
     end
 
-    def war_day_header
-      ->(first, second) { "#{first}-#{second}" }
-    end
-
     def renderer
       :unicode
     end
@@ -127,10 +123,6 @@ class TableCreator
         ☠️  - Participated only in the first day  
         ✅ - Partifipated in both days  
       CAPTION
-    end
-
-    def war_day_header
-      ->(first, second) { "#{first}&#8209;#{second}" }
     end
 
     def renderer
