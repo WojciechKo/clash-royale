@@ -8,7 +8,7 @@ class TableCreator
 
   def create(config_name)
     config = Config.for(config_name)
-    instruction + table(config) + footer
+    table(config) + "\n\n" + config.caption + "\n" + instruction  + "\n\n" + footer
   end
 
   private
@@ -23,19 +23,23 @@ class TableCreator
   end
 
   def headings(war_day_header)
-    day_headers = clan_wars_participants.map.with_index do |_el, index|
-      war_ago = index + 1
-      [war_day_header.call(war_ago, 1), war_day_header.call(war_ago, 2)]
-    end.flatten
+    day_headers = (1 ..clan_wars_participants.size).map(&:to_s)
 
     headings = ['User'] + day_headers
   end
 
   def rows(transform_user, sign_mapper)
     members.map do |member|
-      participations = clan_wars_participants.flat_map do |clan_war_participants|
-        [clan_war_participants.day_1.include?(member),
-         clan_war_participants.day_2.include?(member)]
+      participations = clan_wars_participants.map do |clan_war_participants|
+        if clan_war_participants.day_1.include?(member)
+          if clan_war_participants.day_2.include?(member)
+            :both
+          else
+            :day_1
+          end
+        else
+          :none
+        end
       end
 
       participations.map!{ |participated| sign_mapper.call(participated) }
@@ -45,15 +49,11 @@ class TableCreator
   end
 
   def instruction
-    <<~INSTRUCTION
-      3-1 means 1st day of 3rd clan war ago
-      8-2 means 2nd day of 8th clan war ago
-
-    INSTRUCTION
+    "Numbers in header means which clan war given column refers to, e.g. 4 means 4th war ago."
   end
 
   def footer
-    "\n\nCreated at #{Time.now.strftime("%Y-%m-%d %H:%M:%S")}"
+    "Created at #{Time.now.strftime("%Y-%m-%d %H:%M:%S")}"
   end
 
   class Config
@@ -72,7 +72,21 @@ class TableCreator
     end
 
     def participate_sign
-      ->(participated) { participated ? '+' : '-' }
+      ->(participated) {
+        case participated
+        when :none then 'X'
+        when :day_1 then '-'
+        when :both then '+'
+        end
+      }
+    end
+
+    def caption
+      <<~CAPTION
+        X - Does not participated
+        - - Participated only in the first day
+        + - Partifipated in both days
+      CAPTION
     end
 
     def war_day_header
@@ -98,7 +112,21 @@ class TableCreator
     end
 
     def participate_sign
-      ->(participated) { participated ? '✅' : '❌' }
+      ->(participated) {
+        case participated
+        when :none then '❌'
+        when :day_1 then '☠️'
+        when :both then '✅'
+        end
+      }
+    end
+
+    def caption
+      <<~CAPTION
+        ❌ - Does not participated  
+        ☠️  - Participated only in the first day  
+        ✅ - Partifipated in both days  
+      CAPTION
     end
 
     def war_day_header
