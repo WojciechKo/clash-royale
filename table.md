@@ -52,4 +52,4 @@
 
 Numbers in header means which clan war given column refers to, e.g. 4 means 4th war ago.
 
-Created at 2018-07-03 18:07:36
+Created at 2018-07-03 18:08:51

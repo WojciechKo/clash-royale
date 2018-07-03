@@ -64,81 +64,81 @@ class TableCreator
       else raise 'Not implemented'
       end
     end
-  end
 
-  class Unicode
-    def transform_user
-      ->(user_name) { user_name }
-    end
+    class Unicode
+      def transform_user
+        ->(user_name) { user_name }
+      end
 
-    def participate_sign
-      ->(participated) {
-        case participated
-        when :none then 'X'
-        when :day_1 then '-'
-        when :both then '+'
-        end
-      }
-    end
+      def participate_sign
+        ->(participated) {
+          case participated
+          when :none then 'X'
+          when :day_1 then '-'
+          when :both then '+'
+          end
+        }
+      end
 
-    def caption
-      <<~CAPTION
+      def caption
+        <<~CAPTION
         X - Does not participated
         - - Participated only in the first day
         + - Partifipated in both days
-      CAPTION
-    end
+        CAPTION
+      end
 
-    def renderer
-      :unicode
-    end
+      def renderer
+        :unicode
+      end
 
-    def renderer_config
-      Proc.new do |renderer|
-        renderer.border do
-          separator :each_row
+      def renderer_config
+        Proc.new do |renderer|
+          renderer.border do
+            separator :each_row
+          end
         end
       end
     end
-  end
 
-  class Markdown
-    def transform_user
-      ->(user_name) { "``#{user_name}``" }
-    end
+    class Markdown
+      def transform_user
+        ->(user_name) { "``#{user_name}``" }
+      end
 
-    def participate_sign
-      ->(participated) {
-        case participated
-        when :none then '❌'
-        when :day_1 then '☠️'
-        when :both then '✅'
-        end
-      }
-    end
+      def participate_sign
+        ->(participated) {
+          case participated
+          when :none then '❌'
+          when :day_1 then '☠️'
+          when :both then '✅'
+          end
+        }
+      end
 
-    def caption
-      <<~CAPTION
+      def caption
+        <<~CAPTION
         ❌ - Does not participated  
         ☠️  - Participated only in the first day  
         ✅ - Partifipated in both days  
-      CAPTION
-    end
+        CAPTION
+      end
 
-    def renderer
-      :basic
-    end
+      def renderer
+        :basic
+      end
 
-    def renderer_config
-      Proc.new do |renderer|
-        renderer.border do
-          left '|'
-          right '|'
-          center '|'
-          mid '-'
-          mid_left '|'
-          mid_mid '|'
-          mid_right '|'
+      def renderer_config
+        Proc.new do |renderer|
+          renderer.border do
+            left '|'
+            right '|'
+            center '|'
+            mid '-'
+            mid_left '|'
+            mid_mid '|'
+            mid_right '|'
+          end
         end
       end
     end
