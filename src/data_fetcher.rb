@@ -10,9 +10,9 @@ class DataFetcher
   end
 
   def update_clan_info
-    options = Selenium::WebDriver::Firefox::Options.new
-    options.add_argument('--headless')
-    driver = Selenium::WebDriver.for :firefox, options: options
+    # options = Selenium::WebDriver::Firefox::Options.new
+    # options.add_argument('--headless')
+    driver = Selenium::WebDriver.for :firefox#, options: options
 
     driver.navigate.to "https://statsroyale.com/clan/#{@clan_hash}"
     element = driver.find_element(css: '.clan__refreshButton')
