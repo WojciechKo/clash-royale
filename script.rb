@@ -1,7 +1,8 @@
 require 'net/http'
 require 'nokogiri'
+require_relative 'table_creator'
 
-WINDOW_SIZE = 3
+WINDOW_SIZE = 10
 ClanWarParticipants = Struct.new(:clan_war_ago, :day_1, :day_2)
 
 def fetch_clan_members
@@ -38,3 +39,6 @@ participants = fetch_clan_war_participants
 
 lazy_shits = get_lazy_members(members, participants)
 puts lazy_shits
+
+table = TableCreator.new(members, participants).create
+File.write('results.txt', table)
