@@ -1,4 +1,4 @@
-require 'terminal-table'
+require 'tty-table'
 
 class TableCreator
   def initialize(members, clan_wars_participants)
@@ -7,7 +7,7 @@ class TableCreator
   end
 
   def create
-    instruction + table.to_s
+    instruction + table
   end
 
   private
@@ -15,11 +15,12 @@ class TableCreator
   attr_reader :members, :clan_wars_participants
 
   def table
-    Terminal::Table.new(
-      headings: headings,
-      rows: rows,
-      style: {all_separators: true, alignment: :center}
-    )
+    TTY::Table.new(
+      header: headings,
+      rows: rows
+    ).render(:unicode, alignment: [:center], padding: [0, 1]) do |renderer|
+      renderer.border.separator = :each_row
+    end
   end
 
   def headings
@@ -45,7 +46,7 @@ class TableCreator
   end
 
   def participance_sign(bool)
-    bool ? "+" : "-"
+    bool ? "✅" : "❌"
   end
 
   def instruction

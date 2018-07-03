@@ -2,12 +2,27 @@ GEM
   remote: https://rubygems.org/
   specs:
     byebug (10.0.2)
+    equatable (0.5.0)
     mini_portile2 (2.3.0)
+    necromancer (0.4.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
-    terminal-table (1.8.0)
-      unicode-display_width (~> 1.1, >= 1.1.1)
-    unicode-display_width (1.4.0)
+    pastel (0.7.2)
+      equatable (~> 0.5.0)
+      tty-color (~> 0.4.0)
+    strings (0.1.1)
+      unicode-display_width (~> 1.3.0)
+      unicode_utils (~> 1.4.0)
+    tty-color (0.4.2)
+    tty-screen (0.6.4)
+    tty-table (0.10.0)
+      equatable (~> 0.5.0)
+      necromancer (~> 0.4.0)
+      pastel (~> 0.7.2)
+      strings (~> 0.1.0)
+      tty-screen (~> 0.6.4)
+    unicode-display_width (1.3.3)
+    unicode_utils (1.4.0)
 
 PLATFORMS
   ruby
@@ -15,7 +30,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   nokogiri
-  terminal-table
+  tty-table
 
 BUNDLED WITH
    1.16.2
