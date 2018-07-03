@@ -1,7 +1,9 @@
 require_relative 'table_creator'
 require_relative 'data_fetcher'
 
-fetcher = DataFetcher.new
+clan_hash = 'LU2VCPU'
+
+fetcher = DataFetcher.new(clan_hash)
 fetcher.update_clan_info
 
 members = fetcher.fetch_clan_members
