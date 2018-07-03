@@ -40,5 +40,14 @@ participants = fetch_clan_war_participants
 lazy_shits = get_lazy_members(members, participants)
 puts lazy_shits
 
-table = TableCreator.new(members, participants).create
-File.write('results.txt', table)
+# members = ['adi', 'bob', 'ciele']
+# participants = [
+#   ClanWarParticipants.new(1, ['adi', 'bob'], ['bob']),
+#   ClanWarParticipants.new(2, ['adi', 'bob'], ['adi', 'bob']),
+#   ClanWarParticipants.new(3, ['ciele', 'bob'], ['ciele']),
+# ]
+
+table_creator = TableCreator.new(members, participants)
+
+File.write('table.txt', table_creator.create(:unicode))
+File.write('table.md', table_creator.create(:markdown))
