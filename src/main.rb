@@ -11,5 +11,5 @@ participants = fetcher.fetch_clan_war_participants
 
 table_creator = TableCreator.new(members, participants)
 
-File.write('table.txt', table_creator.create(:unicode))
-File.write('table.md', table_creator.create(:markdown))
+File.write('outcome.txt', table_creator.create(:unicode))
+File.write('outcome.md', table_creator.create(:markdown))
