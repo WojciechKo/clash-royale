@@ -16,8 +16,11 @@ class DataFetcher
 
     Selenium::WebDriver.for(:firefox, options: options).tap do |driver|
       driver.navigate.to "https://statsroyale.com/clan/#{@clan_hash}"
-      element = driver.find_element(css: '.clan__refreshButton')
-      driver.execute_script("arguments[0].click()", element)
+      begin
+        driver.find_element(css: '.qc-cmp-button[onclick]').click()
+      rescue Selenium::WebDriver::Error::NoSuchElementError
+      end
+      driver.find_element(css: '.clan__refreshButton').click()
       driver.quit
     end
   end
