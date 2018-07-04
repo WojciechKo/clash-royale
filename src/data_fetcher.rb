@@ -10,14 +10,16 @@ class DataFetcher
   end
 
   def update_clan_info
-    # options = Selenium::WebDriver::Firefox::Options.new
-    # options.add_argument('--headless')
-    driver = Selenium::WebDriver.for :firefox#, options: options
+    options = Selenium::WebDriver::Firefox::Options.new.tap do |options|
+      options.add_argument('--headless')
+    end
 
-    driver.navigate.to "https://statsroyale.com/clan/#{@clan_hash}"
-    element = driver.find_element(css: '.clan__refreshButton')
-    driver.execute_script("arguments[0].click()", element)
-    driver.quit
+    Selenium::WebDriver.for(:firefox, options: options).tap do |driver|
+      driver.navigate.to "https://statsroyale.com/clan/#{@clan_hash}"
+      element = driver.find_element(css: '.clan__refreshButton')
+      driver.execute_script("arguments[0].click()", element)
+      driver.quit
+    end
   end
 
   def fetch_clan_members
