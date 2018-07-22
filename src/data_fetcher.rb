@@ -18,8 +18,11 @@ class DataFetcher
       driver.navigate.to "https://statsroyale.com/clan/#{@clan_hash}"
       begin
         driver.find_element(css: '.qc-cmp-button[onclick]').click()
-      rescue Selenium::WebDriver::Error::NoSuchElementError
+      rescue => e
+        puts "Can't click accept cookies"
+        puts e.inspect
       end
+      sleep 1
       driver.find_element(css: '.clan__refreshButton').click()
       driver.quit
     end
@@ -29,7 +32,7 @@ class DataFetcher
     response = Net::HTTP.get(URI("https://statsroyale.com/clan/#{@clan_hash}"))
     Nokogiri::HTML(response).css('.clan__table .clan__rowContainer').map do |row|
       row.css('.clan__row:nth-child(2)').text.strip
-    end
+    end.sort!
   end
 
   def fetch_clan_war_participants(wars_count = 10)
