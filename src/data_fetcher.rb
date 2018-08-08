@@ -17,7 +17,7 @@ class DataFetcher
     Selenium::WebDriver.for(:firefox, options: options).tap do |driver|
       driver.navigate.to "https://statsroyale.com/clan/#{@clan_hash}"
       begin
-        driver.find_element(css: 'button.qc-cmp-button').click()
+        driver.find_element(css: 'button.qc-cmp-secondary-button').click()
       rescue => e
         puts "Can't click accept cookies"
         puts e.inspect
