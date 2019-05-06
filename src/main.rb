@@ -1,7 +1,7 @@
 require_relative 'table_creator'
 require_relative 'data_fetcher'
 
-clan_hash = '2OPOLP'
+clan_hash = 'Y8YU8L08'
 
 fetcher = DataFetcher.new(clan_hash)
 fetcher.update_clan_info
