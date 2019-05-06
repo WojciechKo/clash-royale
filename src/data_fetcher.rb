@@ -10,14 +10,23 @@ class DataFetcher
   end
 
   def update_clan_info
-    options = Selenium::WebDriver::Firefox::Options.new.tap do |options|
-      options.add_argument('--headless')
+    Selenium::WebDriver.logger.level = :debug
+
+    options = Selenium::WebDriver::Firefox::Options.new(log_level: :trace).tap do |options|
+      # options.add_argument('--headless')
     end
 
-    Selenium::WebDriver.for(:firefox, options: options).tap do |driver|
+    # Selenium::WebDriver.for(:firefox, options: options).tap do |driver|
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--disable-popup-blocking')
+    options.add_argument('--disable-translate')
+
+    Selenium::WebDriver.for(:chrome, options: options).tap do |driver|
       driver.navigate.to "https://statsroyale.com/clan/#{@clan_hash}"
+
       begin
-        driver.find_element(css: 'button.qc-cmp-secondary-button').click()
+        driver.execute_script("document.querySelector('.qc-cmp-button.qc-cmp-secondary-button').click()")
       rescue => e
         puts "Can't click accept cookies"
         puts e.inspect
