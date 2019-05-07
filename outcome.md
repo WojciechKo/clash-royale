@@ -5,32 +5,37 @@
 |     ``BannyQ``      | ❌ | ❌ | ❌ | ❌ |
 |     ``Barteb``      | ❌ | ❌ | ❌ | ❌ |
 |  ``CLASH ROYALE``   | ❌ | ❌ | ❌ | ❌ |
-|    ``Chara <3``     | ☠️  | ✅ | ❌ | ✅ |
-|      ``Dawid``      | ❌ | ❌ | ❌ | ❌ |
-|   ``Dominik yt``    | ❌ | ❌ | ❌ | ❌ |
+|    ``CocoJambo``    | ❌ | ❌ | ❌ | ❌ |
 |    ``GhostHome``    | ❌ | ❌ | ❌ | ❌ |
 |  ``Janekdzbanek``   | ✅ | ✅ | ✅ | ✅ |
 |      ``John``       | ✅ | ✅ | ✅ | ✅ |
 |   ``KapiraGamer``   | ✅ | ❌ | ☠️  | ❌ |
+|     ``Lukass``      | ❌ | ❌ | ❌ | ❌ |
 |     ``Mati 3``      | ❌ | ❌ | ❌ | ❌ |
-|   ``MatixGaming``   | ☠️  | ❌ | ❌ | ❌ |
+|   ``Niszczyciel``   | ❌ | ❌ | ❌ | ❌ |
 | ``Obywatel_Snejk``  | ✅ | ✅ | ✅ | ❌ |
 |     ``OskuseQ``     | ✅ | ❌ | ❌ | ❌ |
 |    ``Ostry909``     | ❌ | ❌ | ❌ | ❌ |
 |   ``POLSKI BÓG``    | ✅ | ❌ | ❌ | ❌ |
-| ``Pan Chlebcio YT`` | ❌ | ❌ | ❌ | ❌ |
+|    ``PRO WIKA``     | ❌ | ❌ | ❌ | ❌ |
+|     ``Paweł09``     | ❌ | ❌ | ❌ | ❌ |
 |     ``Pawilk``      | ❌ | ❌ | ❌ | ❌ |
 |    ``Rafterpl``     | ✅ | ✅ | ✅ | ❌ |
 |     ``Stachu``      | ❌ | ❌ | ❌ | ❌ |
-|      ``TegW``       | ❌ | ❌ | ❌ | ❌ |
 |     ``Tobiasz``     | ✅ | ❌ | ❌ | ❌ |
+|     ``Tygrys``      | ❌ | ❌ | ❌ | ❌ |
 |   ``WojciechKo``    | ✅ | ✅ | ✅ | ✅ |
+|   ``Yuri Tarded``   | ❌ | ❌ | ❌ | ❌ |
+|    ``Ziutek44``     | ❌ | ❌ | ❌ | ❌ |
 |      ``anix``       | ✅ | ✅ | ✅ | ✅ |
 |     ``durian``      | ❌ | ❌ | ❌ | ❌ |
-|  ``game kameleon``  | ❌ | ❌ | ❌ | ✅ |
+|     ``filasek``     | ❌ | ❌ | ❌ | ❌ |
+|   ``hollis2431``    | ❌ | ❌ | ❌ | ❌ |
 |   ``jan i krzys``   | ❌ | ❌ | ❌ | ❌ |
 |      ``kskd``       | ❌ | ❌ | ❌ | ❌ |
+| ``lufa z nurofenu`` | ❌ | ❌ | ❌ | ❌ |
 |     ``marcel``      | ✅ | ✅ | ✅ | ✅ |
+|   ``michaskies``    | ❌ | ❌ | ❌ | ❌ |
 |     ``michał``      | ✅ | ❌ | ❌ | ❌ |
 |   ``oliwierKxD``    | ✅ | ✅ | ❌ | ❌ |
 | ``pan czekoladka``  | ❌ | ❌ | ❌ | ❌ |
@@ -42,7 +47,6 @@
 |      ``tymek``      | ❌ | ❌ | ❌ | ❌ |
 |    ``witek zd``     | ❌ | ❌ | ✅ | ☠️  |
 |       ``xd``        | ✅ | ❌ | ❌ | ❌ |
-|    ``Émřĕ möŕ``     | ☠️  | ❌ | ❌ | ❌ |
 
 ❌ - Does not participated  
 ☠️  - Participated only in the first day  
@@ -50,4 +54,4 @@
 
 Numbers in header means which clan war given column refers to, e.g. 4 means 4th war ago.
 
-Created at 2019-05-06 17:51:01
+Created at 2019-05-07 19:49:30
